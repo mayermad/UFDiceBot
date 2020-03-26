@@ -18,13 +18,7 @@ public class DmgCommand implements ICommand {
             StringBuilder builder = new StringBuilder();
 
             int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            int r10 = 0;
 
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            }
-
-            d10 = Math.max(d10, r10);
             builder.append("Du hast ").append(d10).append(" Schaden gewürfelt.");
 
             channel.sendMessage(builder.toString()).queue();
@@ -37,11 +31,6 @@ public class DmgCommand implements ICommand {
         try {
             int target = Integer.parseInt(goal);
             int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            int r10 = 0;
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            }
-            d10 = Math.max(d10, r10);
             d10  = d10 + target;
             builder.append("Du hast ").append(d10).append(" Schaden gewürfelt,\n");
 

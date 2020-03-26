@@ -18,14 +18,6 @@ public class RollCommand implements ICommand {
             StringBuilder builder = new StringBuilder();
 
             int d100 = ThreadLocalRandom.current().nextInt(1, 100 + 1);
-            int r100 = 100;
-            int s100 = 100;
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r100 = ThreadLocalRandom.current().nextInt(1,  95);
-                s100 = ThreadLocalRandom.current().nextInt(1,  95);
-            }
-
-            d100 = Math.min(d100,Math.min(r100,s100));
 
             builder.append("Du hast eine ").append(d100).append(" gewürfelt.");
 
@@ -39,18 +31,6 @@ public class RollCommand implements ICommand {
         try {
             int target = Integer.parseInt(goal);
             int d100 = ThreadLocalRandom.current().nextInt(1, 100 + 1);
-            int r100 = 100;
-            int s100 = 100;
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r100 = ThreadLocalRandom.current().nextInt(1,  95);
-                s100 = ThreadLocalRandom.current().nextInt(1,  95);
-            }
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("286794002995347456"))){
-                d100 = Math.max(d100,s100);
-            }else{
-                d100 = Math.min(d100,Math.min(r100,s100));
-            }
-
 
             int lvl = (target - d100)/10;
 

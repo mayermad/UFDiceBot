@@ -19,14 +19,7 @@ public class Dmg2Command implements ICommand {
 
             int d210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
                     + ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            int r210 = 0;
 
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
-                        + ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            }
-
-            d210 = Math.max(d210, r210);
             builder.append("Du hast ").append(d210).append(" Schaden gewürfelt.");
 
             channel.sendMessage(builder.toString()).queue();
@@ -40,12 +33,6 @@ public class Dmg2Command implements ICommand {
             int target = Integer.parseInt(goal);
             int d210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
                     + ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            int r210 = 0;
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
-                        + ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            }
-            d210 = Math.max(d210, r210);
             d210  = d210 + target;
             builder.append("Du hast ").append(d210).append(" Schaden gewürfelt,\n");
 
