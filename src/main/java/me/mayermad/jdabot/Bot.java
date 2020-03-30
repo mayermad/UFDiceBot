@@ -13,7 +13,7 @@ public class Bot {
                 .setToken(Config.get("token"))
                 .addEventListeners(new Listener())
                 //.setActivity(Activity.listening("Jazz"))
-                .setActivity(Activity.playing("Only War"))
+                .setActivity(Activity.playing("Warhammer Fantasy RPG"))
                 .build();
 
     }

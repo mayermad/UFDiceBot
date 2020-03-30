@@ -10,11 +10,12 @@ public class CoinCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getChannel();
-        Boolean toss = ThreadLocalRandom.current().nextBoolean();
+
+        boolean toss = ThreadLocalRandom.current().nextBoolean();
         if(toss){
-            channel.sendMessage("Kopf").queue();
+            channel.sendMessage(ctx.getEvent().getAuthor().getAsMention() + " wirft Kopf").queue();
             return;}
-        channel.sendMessage("Zahl").queue();
+        channel.sendMessage(ctx.getEvent().getAuthor().getAsMention() + " wirft Zahl").queue();
     }
 
     @Override

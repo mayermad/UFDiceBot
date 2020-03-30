@@ -1,6 +1,5 @@
 package me.mayermad.jdabot.command.commands;
 
-import me.mayermad.jdabot.Config;
 import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -19,15 +18,8 @@ public class Dmg2Command implements ICommand {
 
             int d210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
                     + ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            int r210 = 0;
 
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
-                        + ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            }
-
-            d210 = Math.max(d210, r210);
-            builder.append("Du hast ").append(d210).append(" Schaden gewürfelt.");
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(d210).append(" Schaden gewürfelt.");
 
             channel.sendMessage(builder.toString()).queue();
             return;
@@ -38,16 +30,11 @@ public class Dmg2Command implements ICommand {
 
         try {
             int target = Integer.parseInt(goal);
-            int d210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
-                    + ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            int r210 = 0;
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
-                        + ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            }
-            d210 = Math.max(d210, r210);
-            d210  = d210 + target;
-            builder.append("Du hast ").append(d210).append(" Schaden gewürfelt,\n");
+            int d210 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
+            int d110= ThreadLocalRandom.current().nextInt(1, 10 + 1);
+            int r210;
+            r210  = d210 + target + d110;
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(r210).append(" Schaden gewürfelt,\n (").append(d210).append(" + ").append(d110).append(" + ").append(target).append(")");
 
         } catch(Exception e) {
             builder.append("Schreib mal was richtiges bitte!");

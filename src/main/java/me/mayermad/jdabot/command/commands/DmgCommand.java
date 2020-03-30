@@ -1,6 +1,5 @@
 package me.mayermad.jdabot.command.commands;
 
-import me.mayermad.jdabot.Config;
 import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -18,14 +17,8 @@ public class DmgCommand implements ICommand {
             StringBuilder builder = new StringBuilder();
 
             int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            int r10 = 0;
 
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            }
-
-            d10 = Math.max(d10, r10);
-            builder.append("Du hast ").append(d10).append(" Schaden gewürfelt.");
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(d10).append(" Schaden gewürfelt.");
 
             channel.sendMessage(builder.toString()).queue();
             return;
@@ -37,13 +30,9 @@ public class DmgCommand implements ICommand {
         try {
             int target = Integer.parseInt(goal);
             int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            int r10 = 0;
-            if (ctx.getEvent().getAuthor().getId().equals(Config.get("owner_id"))) {
-                r10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            }
-            d10 = Math.max(d10, r10);
             d10  = d10 + target;
-            builder.append("Du hast ").append(d10).append(" Schaden gewürfelt,\n");
+            int r10 = d10 - target;
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(d10).append(" Schaden gewürfelt,\n (").append(r10).append(" + ").append(target).append(")");
 
         } catch(Exception e) {
             builder.append("Schreib mal was richtiges bitte!");
