@@ -1,6 +1,5 @@
 package me.mayermad.jdabot.command.commands;
 
-import me.mayermad.jdabot.Config;
 import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -19,7 +18,11 @@ public class DmgCommand implements ICommand {
 
             int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
 
+<<<<<<< HEAD
             builder.append("Du hast ").append(d10).append(" Schaden gewürfelt.");
+=======
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(d10).append(" Schaden gewürfelt.");
+>>>>>>> OnlyWar
 
             channel.sendMessage(builder.toString()).queue();
             return;
@@ -32,7 +35,8 @@ public class DmgCommand implements ICommand {
             int target = Integer.parseInt(goal);
             int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
             d10  = d10 + target;
-            builder.append("Du hast ").append(d10).append(" Schaden gewürfelt,\n");
+            int r10 = d10 - target;
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(d10).append(" Schaden gewürfelt,\n (").append(r10).append(" + ").append(target).append(")");
 
         } catch(Exception e) {
             builder.append("Schreib mal was richtiges bitte!");

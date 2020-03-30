@@ -1,6 +1,5 @@
 package me.mayermad.jdabot.command.commands;
 
-import me.mayermad.jdabot.Config;
 import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -19,7 +18,7 @@ public class RollCommand implements ICommand {
 
             int d100 = ThreadLocalRandom.current().nextInt(1, 100 + 1);
 
-            builder.append("Du hast eine ").append(d100).append(" gewürfelt.");
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat eine ").append(d100).append(" gewürfelt.");
 
             channel.sendMessage(builder.toString()).queue();
             return;
@@ -34,7 +33,7 @@ public class RollCommand implements ICommand {
 
             int lvl = (target - d100)/10;
 
-            builder.append("Du hast eine ").append(d100).append(" gewürfelt,\n");
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat eine ").append(d100).append(" gewürfelt,\n");
             if (target > d100) {
                 builder.append("damit hast du ").append(lvl).append(" Erfolgsgrade!");
             } else {
