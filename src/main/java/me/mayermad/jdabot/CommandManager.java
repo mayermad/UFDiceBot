@@ -21,7 +21,7 @@ public class CommandManager {
         addCommand(new DmgCommand());
         addCommand(new Dmg2Command());
         addCommand(new CoinCommand());
-        addCommand(new MoneyCommand());
+        addCommand(new D10Command());
         addCommand(new GameCommand());
     }
 
