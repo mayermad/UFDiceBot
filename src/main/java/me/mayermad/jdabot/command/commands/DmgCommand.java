@@ -18,11 +18,7 @@ public class DmgCommand implements ICommand {
 
             int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
 
-<<<<<<< HEAD
-            builder.append("Du hast ").append(d10).append(" Schaden gewürfelt.");
-=======
             builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(d10).append(" Schaden gewürfelt.");
->>>>>>> OnlyWar
 
             channel.sendMessage(builder.toString()).queue();
             return;

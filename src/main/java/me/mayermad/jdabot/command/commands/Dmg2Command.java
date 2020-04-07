@@ -16,14 +16,11 @@ public class Dmg2Command implements ICommand {
         if (args.isEmpty()) {
             StringBuilder builder = new StringBuilder();
 
-            int d210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
-                    + ThreadLocalRandom.current().nextInt(1, 10 + 1);
+            int d210 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
+            int d110 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
+            int e210 = d210 + d110;
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(e210).append(" Schaden gewürfelt.\n (").append(d210).append(" + ").append(d110).append(")");
 
-<<<<<<< HEAD
-            builder.append("Du hast ").append(d210).append(" Schaden gewürfelt.");
-=======
-            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(d210).append(" Schaden gewürfelt.");
->>>>>>> OnlyWar
 
             channel.sendMessage(builder.toString()).queue();
             return;
@@ -34,18 +31,12 @@ public class Dmg2Command implements ICommand {
 
         try {
             int target = Integer.parseInt(goal);
-<<<<<<< HEAD
-            int d210 = ThreadLocalRandom.current().nextInt(1, 10 + 1)
-                    + ThreadLocalRandom.current().nextInt(1, 10 + 1);
-            d210  = d210 + target;
-            builder.append("Du hast ").append(d210).append(" Schaden gewürfelt,\n");
-=======
+
             int d210 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
             int d110= ThreadLocalRandom.current().nextInt(1, 10 + 1);
             int r210;
             r210  = d210 + target + d110;
             builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat ").append(r210).append(" Schaden gewürfelt,\n (").append(d210).append(" + ").append(d110).append(" + ").append(target).append(")");
->>>>>>> OnlyWar
 
         } catch(Exception e) {
             builder.append("Schreib mal was richtiges bitte!");
