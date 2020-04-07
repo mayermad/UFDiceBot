@@ -13,13 +13,16 @@ public class D10Command implements ICommand {
         List<String> args = ctx.getArgs();
         TextChannel channel = ctx.getChannel();
 
-        String goal = args.get(0);
+
         StringBuilder builder = new StringBuilder();
+        Boolean fails = true;
+        int sum = 0;
 
         try {
+            String goal = args.get(0);
             int target = Integer.parseInt(goal);
 
-            int sum = 0;
+
 
             builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat: (");
             for (int i = 1; i < target; i++){
@@ -30,18 +33,33 @@ public class D10Command implements ICommand {
             int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
             sum += d10;
             builder.append(d10);
-            builder.append(") gewürfelt,\n (").append("Das sind insgesamt ").append(sum).append(")");
+            builder.append(") gewürfelt,");
 
+            try {
+                String add = args.get(1);
+                int bonus = Integer.parseInt(add);
+                builder.append(" addiere ").append(bonus);
+                sum += bonus;
+            } catch (Exception e) {
+
+            }
+            builder.append("\n (").append("Das sind insgesamt ").append(sum).append(")");
+            fails = false;
         } catch(Exception e) {
-            builder.append("Ask Dev for usage...");
-        }
 
+        }
+        if (fails) {
+            int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
+            builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat eine ");
+            builder.append(d10);
+            builder.append(" gewürfelt.");
+        }
         channel.sendMessage(builder.toString()).queue();
     }
 
     @Override
     public String getHelp() {
-        return "TBA";
+        return "Usage: `d10 @n @b` with `n = number of dice` and `b = bonus`";
     }
 
     @Override

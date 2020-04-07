@@ -18,8 +18,6 @@ public class CommandManager {
         //addCommand(new PingCommand());
         addCommand(new HelpCommand(this));
         addCommand(new RollCommand());
-        addCommand(new DmgCommand());
-        addCommand(new Dmg2Command());
         addCommand(new CoinCommand());
         addCommand(new D10Command());
         addCommand(new GameCommand());

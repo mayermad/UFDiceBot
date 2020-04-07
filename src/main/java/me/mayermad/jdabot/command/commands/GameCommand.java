@@ -4,6 +4,7 @@ import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;
 import net.dv8tion.jda.api.entities.Activity;
 
+import java.security.KeyStore;
 import java.util.List;
 
 public class GameCommand implements ICommand {
