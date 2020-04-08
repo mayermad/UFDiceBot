@@ -21,6 +21,7 @@ public class CommandManager {
         addCommand(new CoinCommand());
         addCommand(new D10Command());
         addCommand(new GameCommand());
+        addCommand(new AdvCommand());
     }
 
     private void addCommand(ICommand cmd) {

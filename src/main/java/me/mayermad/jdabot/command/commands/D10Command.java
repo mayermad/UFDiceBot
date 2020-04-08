@@ -15,20 +15,18 @@ public class D10Command implements ICommand {
 
 
         StringBuilder builder = new StringBuilder();
-        Boolean fails = true;
+        boolean fails = true;
         int sum = 0;
 
         try {
             String goal = args.get(0);
             int target = Integer.parseInt(goal);
 
-
-
             builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat: (");
             for (int i = 1; i < target; i++){
                 int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
                 sum += d10;
-                builder.append(d10).append(" + ");
+                builder.append(d10).append(", ");
             }
             int d10 = ThreadLocalRandom.current().nextInt(1, 10 + 1);
             sum += d10;
@@ -40,12 +38,12 @@ public class D10Command implements ICommand {
                 int bonus = Integer.parseInt(add);
                 builder.append(" addiere ").append(bonus);
                 sum += bonus;
-            } catch (Exception e) {
+            } catch (Exception ignored) {
 
             }
             builder.append("\n (").append("Das sind insgesamt ").append(sum).append(")");
             fails = false;
-        } catch(Exception e) {
+        } catch(Exception ignored) {
 
         }
         if (fails) {

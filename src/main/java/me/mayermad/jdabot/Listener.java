@@ -1,6 +1,7 @@
 package me.mayermad.jdabot;
 
 import me.duncte123.botcommons.BotCommons;
+import me.mayermad.jdabot.storage.LiteSQL;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.ReadyEvent;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 
 public class Listener extends ListenerAdapter {
 
@@ -35,6 +37,7 @@ public class Listener extends ListenerAdapter {
         if (raw.equalsIgnoreCase(prefix + "shutdown")
                 && user.getId().equals(Config.get("owner_id"))) {
             LOGGER.info("Shutting down");
+            LiteSQL.disconnect();
             event.getJDA().shutdown();
             BotCommons.shutdown(event.getJDA());
 

@@ -91,7 +91,7 @@ public class RollCommand implements ICommand {
                     }
 
                 } catch (Exception e) {
-                    builder.append("Schreib mal was richtiges bitte!");
+                    channel.addReactionById(ctx.getMessage().getId(), "❓").queue();
                 }
 
                 channel.sendMessage(builder.toString()).queue();
