@@ -65,7 +65,7 @@ public class CharmAnimalCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "charmAnimal";
+        return "charmanimal";
     }
 
     @Override

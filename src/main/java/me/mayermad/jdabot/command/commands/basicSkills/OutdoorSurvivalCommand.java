@@ -65,7 +65,7 @@ public class OutdoorSurvivalCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "outdoorSurvival";
+        return "outdoorsurvival";
     }
 
     @Override

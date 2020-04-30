@@ -65,7 +65,7 @@ public class ConsumeAlcoholCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "consumeAlcohol";
+        return "consumealcohol";
     }
 
     @Override

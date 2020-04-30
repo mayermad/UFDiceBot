@@ -10,10 +10,22 @@ public class SetCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         List<String> args = ctx.getArgs();
-        int value = Integer.parseInt(args.get(1));
-        SQLManager.setCharacteristic( args.get(0), ctx.getAuthor().getId(), value);
-        SQLManager.setBasicSkill(args.get(0), ctx.getAuthor().getId(), value);
+        try {
+            int value = Integer.parseInt(args.get(1));
+            SQLManager.setCharacteristic(args.get(0), ctx.getAuthor().getId(), value);
+            SQLManager.setBasicSkill(args.get(0), ctx.getAuthor().getId(), value);
+            SQLManager.setAdvancedSkill(args.get(0), ctx.getAuthor().getId(), value);
 
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            try {
+                int value = Integer.parseInt(args.get(2));
+                SQLManager.setGroupedSkill(args.get(0), args.get(1), ctx.getAuthor().getId(), value);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return;
+            }
+        }
         ctx.getChannel().addReactionById(ctx.getMessage().getId(), "\uD83D\uDC4D").queue();
     }
 

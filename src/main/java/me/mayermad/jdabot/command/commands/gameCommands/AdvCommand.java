@@ -61,7 +61,7 @@ public class AdvCommand implements ICommand {
         return "no help for you";
     }
 
-    private boolean isInt(String string) {
+    public static boolean isInt(String string) {
         if (string == null) {
             return false;
         }

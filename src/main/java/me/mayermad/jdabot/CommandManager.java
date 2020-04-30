@@ -3,6 +3,7 @@ package me.mayermad.jdabot;
 import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;
 import me.mayermad.jdabot.command.commands.*;
+import me.mayermad.jdabot.command.commands.advancedSkills.*;
 import me.mayermad.jdabot.command.commands.basicSkills.*;
 import me.mayermad.jdabot.command.commands.characterCommands.*;
 import me.mayermad.jdabot.command.commands.characteristics.*;
@@ -35,9 +36,9 @@ public class CommandManager {
         addCommand(new DxCommand());
         //Character commands
         addCommand(new CharGenCommand());
-        //addCommand(new CreateCharCommand());
         addCommand(new SetCommand());
         addCommand(new GetCommand());
+        addCommand(new SetStandardCommand());
         //Characteristics
         addCommand(new WSCommand());
         addCommand(new BSCommand());
@@ -50,7 +51,6 @@ public class CommandManager {
         addCommand(new WPCommand());
         addCommand(new FelCommand());
         //basic skills
-        addCommand(new ArtCommand());
         addCommand(new AthleticsCommand());
         addCommand(new BriberyCommand());
         addCommand(new CharmAnimalCommand());
@@ -61,21 +61,43 @@ public class CommandManager {
         addCommand(new DodgeCommand());
         addCommand(new DriveCommand());
         addCommand(new EnduranceCommand());
-        addCommand(new EntertainCommand());
         addCommand(new GambleCommand());
         addCommand(new GossipCommand());
         addCommand(new HaggleCommand());
         addCommand(new IntimidateCommand());
         addCommand(new IntuitionCommand());
         addCommand(new LeadershipCommand());
-        addCommand(new MeleeBasicCommand());
-        addCommand(new MeleeCommand());
         addCommand(new NavigationCommand());
         addCommand(new OutdoorSurvivalCommand());
         addCommand(new PerceptionCommand());
-        addCommand(new RideCommand());
         addCommand(new RowCommand());
+        //advanced skills
+        addCommand(new AnimalCareCommand());
+        addCommand(new ChannelCommand());
+        addCommand(new EvaluateCommand());
+        addCommand(new HealCommand());
+        addCommand(new PickLockCommand());
+        addCommand(new PrayCommand());
+        addCommand(new ResearchCommand());
+        addCommand(new SetTrapCommand());
+        addCommand(new SleightOfHandCommand());
+        addCommand(new SwimCommand());
+        addCommand(new TrackCommand());
+        //grouped skills
+        addCommand(new AnimalTrainingCommand());
+        addCommand(new ArtCommand());
+        addCommand(new EntertainCommand());
+        addCommand(new LanguageCommand());
+        addCommand(new LoreCommand());
+        addCommand(new MeleeCommand());
+        addCommand(new PerformCommand());
+        addCommand(new PlayCommand());
+        addCommand(new RangedCommand());
+        addCommand(new RideCommand());
+        addCommand(new SailCommand());
+        addCommand(new SecretSignsCommand());
         addCommand(new StealthCommand());
+        addCommand(new TradeCommand());
     }
 
     private void addCommand(ICommand cmd) {

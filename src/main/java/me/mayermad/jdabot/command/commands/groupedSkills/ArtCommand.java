@@ -2,9 +2,11 @@ package me.mayermad.jdabot.command.commands.groupedSkills;
 
 import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;
+import me.mayermad.jdabot.command.commands.gameCommands.AdvCommand;
 import me.mayermad.jdabot.storage.SQLManager;
 import net.dv8tion.jda.api.entities.TextChannel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -16,16 +18,33 @@ public class ArtCommand implements ICommand {
         TextChannel channel = ctx.getChannel();
         StringBuilder builder = new StringBuilder();
 
-        String argument;
         try {
+            String argument;
+            String zero = "0";
+            List<String> arguments = new ArrayList<>(args);
+            arguments.add(zero);
+            String speciality = SQLManager.getStandard( "art", ctx.getAuthor().getId());
             builder.append(ctx.getEvent().getAuthor().getAsMention());
             int bonus = 0;
-            if (!args.isEmpty()) {
-                argument = args.get(0);
-                bonus = Integer.parseInt(argument);
+            if (!arguments.isEmpty()) {
+                if (AdvCommand.isInt(arguments.get(0))) {
+                    bonus = Integer.parseInt(arguments.get(0));
+                } else if (AdvCommand.isInt(arguments.get(1))) {
+                    speciality = arguments.get(0);
+                    argument = arguments.get(1);
+                    bonus = Integer.parseInt(argument);
+                } else {
+                    speciality = arguments.get(0);
+                }
             }
-            int target = SQLManager.getBasicSkill("art", ctx.getAuthor().getId()) + SQLManager.getCharacteristic("dex", ctx.getAuthor().getId());
-            builder.append(" Dein Art Skill ist ").append(target).append(". \n");
+
+            int skill = SQLManager.getGroupedSkill("art", speciality, ctx.getAuthor().getId());
+            if (skill == -1 ) {
+                channel.sendMessage(ctx.getAuthor().getAsMention() + " du hast diesen Skill nicht gelernt!").queue();
+                return;
+            }
+            int target = skill + SQLManager.getCharacteristic("dex", ctx.getAuthor().getId());
+            builder.append(" Dein Art (").append(speciality).append(") Skill ist ").append(target).append(". \n");
             int adv = SQLManager.getAdv(ctx.getAuthor().getId());
             if(adv > 0) {
                 target = target + bonus + adv*10;
@@ -65,12 +84,12 @@ public class ArtCommand implements ICommand {
     }
 
     @Override
-    public String getName() {
-        return "art";
+    public String getHelp() {
+        return "nah";
     }
 
     @Override
-    public String getHelp() {
-        return "jo";
+    public String getName() {
+        return "art";
     }
 }
