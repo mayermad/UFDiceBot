@@ -1,4 +1,4 @@
-package me.mayermad.jdabot.command.commands;
+package me.mayermad.jdabot.command.commands.dice;
 
 import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;

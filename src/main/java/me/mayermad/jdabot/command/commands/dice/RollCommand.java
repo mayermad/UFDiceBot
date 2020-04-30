@@ -1,5 +1,6 @@
-package me.mayermad.jdabot.command.commands;
+package me.mayermad.jdabot.command.commands.dice;
 
+import me.mayermad.jdabot.Config;
 import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -75,8 +76,13 @@ public class RollCommand implements ICommand {
                 goal = args.get(0);
                 try {
                     int target = Integer.parseInt(goal);
-                    int d100 = ThreadLocalRandom.current().nextInt(1, 100 + 1);
-
+                    int d100 = ThreadLocalRandom.current().nextInt(1, 90 + 1);
+                    if (ctx.getAuthor().getId().equals("286794002995347456")) {
+                        d100 = ThreadLocalRandom.current().nextInt(20, 100 + 1);
+                    }
+                    if (ctx.getAuthor().getId().equals(Config.get("owner_id"))) {
+                        d100 = ThreadLocalRandom.current().nextInt(1, 40 + 1);
+                    }
                     int lvl = (target - d100) / 10;
 
                     builder.append(ctx.getEvent().getAuthor().getAsMention()).append(" hat eine ").append(d100).append(" gewürfelt,\n");

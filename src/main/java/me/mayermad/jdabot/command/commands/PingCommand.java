@@ -8,10 +8,14 @@ public class PingCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         JDA jda = ctx.getJDA();
-
+        try {
+            jda.wait(30);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         jda.getRestPing().queue(
                 (ping) -> ctx.getChannel()
-                .sendMessageFormat("Reset ping: %sms\nWS ping: %sms", ping, jda.getGatewayPing()).queue()
+                .sendMessageFormat("Wollen wir danach das exit game spielen?").queue()
         );
     }
 

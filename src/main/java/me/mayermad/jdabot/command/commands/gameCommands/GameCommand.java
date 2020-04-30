@@ -1,4 +1,4 @@
-package me.mayermad.jdabot.command.commands;
+package me.mayermad.jdabot.command.commands.gameCommands;
 
 import me.mayermad.jdabot.command.CommandContext;
 import me.mayermad.jdabot.command.ICommand;
@@ -18,7 +18,7 @@ public class GameCommand implements ICommand {
         }
         String game = String.join(" ",args);
         ctx.getJDA().getPresence().setActivity(Activity.playing(game));
-        channel.addReactionById(ctx.getMessage().getId(), "\uD83D\uDC4D").queue();//❓
+        channel.addReactionById(ctx.getMessage().getId(), "\uD83D\uDC4D").queue();
     }
 
     @Override
