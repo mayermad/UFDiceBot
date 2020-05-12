@@ -47,14 +47,14 @@ public class ChannelCommand implements ICommand {
 
             if (target >= d100) {
                 if (d100 % 10 == (d100 / 10) % 10) {
-                    builder.append("!!! KRITISCHER ERFOLG !!!!!");
+                    builder.append("!!! KRITISCHER CAST !!!!!\nDu kannst nächste runde jeden Zauber ohne CN zaubern.");
                 } else {
                     builder.append("damit hast du ").append(lvl).append(" Erfolgsgrade!");
                 }
 
             } else {
-                if (d100 % 10 == (d100 / 10) % 10) {
-                    builder.append("!!! FATALER PATZER !!!");
+                if (d100 % 10 == (d100 / 10) % 10 || d100%10 == 0) {
+                    builder.append("!!! FATALER PATZER !!!\n Würfel auf der Major Miscast Tabelle!");
                 } else {
                     builder.append("damit hast du ").append(-1 * lvl).append(" Misserfolgsgrade!");
                 }

@@ -13,9 +13,9 @@ public class CoinCommand implements ICommand {
 
         boolean toss = ThreadLocalRandom.current().nextBoolean();
         if(toss){
-            channel.sendMessage(ctx.getEvent().getAuthor().getAsMention() + " wirft Kopf").queue();
+            channel.sendMessage(ctx.getEvent().getAuthor().getAsMention() + " Gut für die Spieler").queue();
             return;}
-        channel.sendMessage(ctx.getEvent().getAuthor().getAsMention() + " wirft Zahl").queue();
+        channel.sendMessage(ctx.getEvent().getAuthor().getAsMention() + " Schlecht für die Spieler").queue();
     }
 
     @Override
@@ -26,6 +26,6 @@ public class CoinCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "coin";
+        return "risk";
     }
 }

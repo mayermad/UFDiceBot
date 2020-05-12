@@ -10,6 +10,7 @@ import me.mayermad.jdabot.command.commands.characteristics.*;
 import me.mayermad.jdabot.command.commands.dice.*;
 import me.mayermad.jdabot.command.commands.gameCommands.*;
 import me.mayermad.jdabot.command.commands.groupedSkills.*;
+import me.mayermad.jdabot.command.commands.groupedSkills.CastCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import javax.annotation.Nullable;
@@ -39,6 +40,8 @@ public class CommandManager {
         addCommand(new SetCommand());
         addCommand(new GetCommand());
         addCommand(new SetStandardCommand());
+        addCommand(new AddColumnCommand());
+        addCommand(new MiscastCommand());
         //Characteristics
         addCommand(new WSCommand());
         addCommand(new BSCommand());
@@ -73,6 +76,8 @@ public class CommandManager {
         addCommand(new RowCommand());
         //advanced skills
         addCommand(new AnimalCareCommand());
+        addCommand(new BolaCommand());
+        addCommand(new CastCommand());
         addCommand(new ChannelCommand());
         addCommand(new EvaluateCommand());
         addCommand(new HealCommand());

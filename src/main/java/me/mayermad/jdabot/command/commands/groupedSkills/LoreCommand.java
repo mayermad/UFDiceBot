@@ -43,7 +43,7 @@ public class LoreCommand implements ICommand {
                 return;
             }
             int target = skill + SQLManager.getCharacteristic("int", ctx.getAuthor().getId());
-            builder.append(" Dein ALore (").append(speciality).append(") Skill ist ").append(target).append(". \n");
+            builder.append(" Dein Lore (").append(speciality).append(") Skill ist ").append(target).append(". \n");
             int adv = SQLManager.getAdv(ctx.getAuthor().getId());
             if(adv > 0) {
                 target = target + bonus + adv*10;

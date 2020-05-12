@@ -125,6 +125,10 @@ public class SQLManager {
         LiteSQL.onUpdate("INSERT INTO characteristics (discordId) VALUES (\"" + playerId + "\")");
     }
 
+    public static void addColumn(String table, String name, int def) {
+        LiteSQL.onUpdate("ALTER TABLE " + table + " ADD COLUMN " + name + " INTEGER DEFAULT " + def);
+    }
+
     public static void setCharacteristic(String characteristic, String playerId, int value) {
         try {
             LiteSQL.onUpdate("UPDATE characteristics SET " + characteristic + " = " + value + " WHERE discordId = \"" + playerId + "\"");

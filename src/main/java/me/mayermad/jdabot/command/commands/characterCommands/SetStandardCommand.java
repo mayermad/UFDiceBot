@@ -14,7 +14,7 @@ public class SetStandardCommand implements ICommand {
         try {
             String skill = args.get(0);
             String specialisation = args.get(1);
-            LiteSQL.onUpdate("UPDATE standards SET "+ skill +" = " + specialisation + " WHERE discordId = \"" + playerId + "\"");
+            LiteSQL.onUpdate("UPDATE standards SET "+ skill +" = \"" + specialisation + "\" WHERE discordId = \"" + playerId + "\"");
         } catch (Exception e) {
             e.printStackTrace();
         }

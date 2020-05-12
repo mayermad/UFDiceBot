@@ -16,8 +16,9 @@ public class Bot {
 
         new JDABuilder()
                 .setToken(Config.get("token"))
-                .addEventListeners(new Listener())//.setActivity(Activity.playing("Only War"))
-                .setActivity(Activity.listening("Jazz"))
+                .addEventListeners(new Listener())
+                .setActivity(Activity.playing("Warhammer Fantasy RPG"))
+                //.setActivity(Activity.listening("Jazz"))
                 .build();
 
     }
