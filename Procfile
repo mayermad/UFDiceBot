@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -jar UFDiceBot.jar
+web: java -jar build/libs/UFDiceBot-1.0.jar
