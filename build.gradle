@@ -4,7 +4,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
-mainClassName = 'me.duncte123.jdatuts.Bot'
+mainClassName = 'me.mayermad.jdabot.Bot'
 
 version '1.0'
 
@@ -24,3 +24,7 @@ dependencies {
 }
 
 compileJava.options.encoding = 'UTF-8'
+
+application {
+    mainClassName = mainClassName
+}
