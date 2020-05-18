@@ -29,6 +29,7 @@ public class CommandManager {
         //game commands
         addCommand(new GameCommand());
         addCommand(new AdvCommand());
+        addCommand(new StartCommand());
         //dice
         addCommand(new RollCommand());
         addCommand(new CoinCommand());
